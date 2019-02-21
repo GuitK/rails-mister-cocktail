@@ -1,0 +1,18 @@
+Untitled
+<h1>Chosen cocktail:</h1>
+<h2> <%= @cocktail.name %></h2>
+<p>
+ Ingredients: <% @cocktail.doses.each do |dose| %>
+ <%= dose.description %>
+ <% ingredient = Ingredient.find(dose.ingredient_id) %>
+ <%= ingredient.name %>
+ <% end %>
+</p>
+</p>
+​
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+ <%= f.input :description %>
+ <%= f.association :ingredient %>
+ <%= f.submit "Add the ingredient", class: "btn btn-danger" %>
+<% end %>
+​
